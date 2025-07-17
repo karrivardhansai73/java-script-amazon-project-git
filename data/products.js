@@ -44,7 +44,6 @@ const product1= new Product({
     ]
   });
 
-console.log(product1);
 
 export const product = [
   {
@@ -709,4 +708,3 @@ export const product = [
   return new Product(productDetails);
 
 });
-console.log(product)
