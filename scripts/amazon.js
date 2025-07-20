@@ -1,8 +1,10 @@
 import {cart,addToCart, calculateCartQuantity} from '../data/cart.js';
-import {product,loadProducts} from '../data/products.js';
-loadProducts(renderProductsGrid);
+import {product,loadproductsFetch} from '../data/products.js';
 
-function renderProductsGrid(){
+loadproductsFetch(()=>{
+  resolve();
+}).then(()=>{
+  
 
   let productHTML=''
   product.forEach((product)=>{
@@ -69,4 +71,4 @@ function renderProductsGrid(){
         document.querySelector('.cart-quantity-js').innerHTML=calculateCartQuantity();
       });
   });
-}
+})

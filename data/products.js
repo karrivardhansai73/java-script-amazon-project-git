@@ -89,6 +89,31 @@ const tshirt =new Clothing({id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
     sizeChartLink: "images/clothing-size-chart.png"});
     
 export let product=[];
+
+export function loadproductsFetch(){
+   const promise=fetch('https://supersimplebackend.dev/products').then((response)=>{
+   return  response.json();
+  }).then((productsData)=>{
+    product=productsData.map((productDetails)=>{
+  if(productDetails.type==='clothing'){
+    return new Clothing(productDetails);
+  }
+  else if(productDetails.type==='appliance'){
+    return new Appliance(productDetails);
+  }
+  return new Product(productDetails);
+
+});
+ console.log('load product');
+  });
+  return promise;
+}
+
+/*
+loadproductsFetch().then(()=>{
+  console.log('next step')
+});  */
+
 export function loadProducts(fun){
     const xhr=new XMLHttpRequest();
 
